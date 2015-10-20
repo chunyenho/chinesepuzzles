@@ -172,4 +172,11 @@ void print_name(int x, int y)
 //        0x X1X1 Y1Y1 X2X2 Y2Y2)
 int findfree();
 //Check map whether it's completed
-bool checkcomplete();
+bool checkcomplete()
+{
+    if(map[3][1]==TT && map[3][2]==TT && map[4][1]==TT && map[4][2]==TT)
+    {
+        printf("Success!!!!!!!!!");
+        break; 
+    }
+}
