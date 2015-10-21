@@ -10,14 +10,17 @@ int steps = 0;
 馬超:	MC	    2x1	    1
 趙雲:	ZY	    2x1	    1
 黃忠:	HC	    2x1	    1
-卒:	    Z	    1x1	    4
+卒:	    Z	    1x1	    1
+兵:     P       1x1     1
+象:     S       1x1     1
+士:     H       1x1     1
 */
-enum {Free, TT, GY, CF, MC, ZY, HC, Z};
+enum {Free, TT, GY, CF, MC, ZY, HC, Z, P, S, H};
 enum {UP, RIGHT, DOWN, LEFT};
 void init(void);
 void pull(char charac);
 void push(char charac, int x, int y);
-bool move(char* dir);
+void move(char* dir);
 void status(void);
 void print_name(int x, int y);
 int find_free();
@@ -43,9 +46,9 @@ void init()
     push(GY,2,1);
     push(HC,2,3);
     push(Z,3,1);
-    push(Z,3,2);
-    push(Z,4,0);
-    push(Z,4,3);
+    push(P,3,2);
+    push(S,4,0);
+    push(H,4,3);
 }
 // pull character out from map
 void pull(char charac)
@@ -67,10 +70,10 @@ void push(char charac, int x, int y)
 {    
     switch(charac)
     {
-        case 0:
+        case Free:
             printf("error!! can't push free");
             break;
-        case 1:
+        case TT:
             if(x+1<5 && y+1<4 && !map[x][y] && !map[x+1][y] && !map[x][y+1] && !map[x+1][y+1])
             {
                 map[x][y] = TT;
@@ -81,7 +84,7 @@ void push(char charac, int x, int y)
             else
                 printf("push TT error!!");    
             break;
-        case 2:
+        case GY:
             if(x<5 && y+1<4 && !map[x][y] && !map[x][y+1])
             {
                 map[x][y] = GY;
@@ -90,7 +93,7 @@ void push(char charac, int x, int y)
             else
                 printf("push GY error!!");    
             break;
-        case 3:
+        case CF:
             if(x+1<5 && y<4 && !map[x][y] && !map[x+1][y])
             {
                 map[x][y] = CF;
@@ -99,7 +102,7 @@ void push(char charac, int x, int y)
             else
                 printf("push CF error!!");   
             break;
-        case 4:
+        case MC:
             if(x+1<5 && y<4 && !map[x][y] && !map[x+1][y])
             {
                 map[x][y] = MC;
@@ -108,7 +111,7 @@ void push(char charac, int x, int y)
             else
                 printf("push MC error!!");   
             break;
-        case 5:
+        case ZY:
             if(x+1<5 && y<4 && !map[x][y] && !map[x+1][y])
             {
                 map[x][y] = ZY;
@@ -117,11 +120,11 @@ void push(char charac, int x, int y)
             else
                 printf("push ZY error!!");   
             break;
-        case 6:
+        case HC:
             if(x+1<5 && y<4 && !map[x][y] && !map[x+1][y])
             {
-                map[x][y] = CF;
-                map[x+1][y] = CF;
+                map[x][y] = HC;
+                map[x+1][y] = HC;
             }
             else
                 printf("push HC error!!");   
@@ -134,13 +137,38 @@ void push(char charac, int x, int y)
             else
                 printf("push Z error!!");   
             break;
+        case P:
+            if(x<5 && y<4 && !map[x][y])
+              {   
+                  map[x][y] = P;
+              }   
+              else
+                  printf("push P error!!");   
+              break;
+        case S:
+            if(x<5 && y<4 && !map[x][y])
+              {   
+                  map[x][y] = S;
+              }   
+              else
+                  printf("push S error!!");   
+              break;
+        case H:
+            if(x<5 && y<4 && !map[x][y])
+              {   
+                  map[x][y] = H;
+              }   
+              else
+                  printf("push H error!!");   
+              break;
+
     }
 
 }
 //Move fuction
 //Input:    FU(First Up), FR, FD, FL, SU(Second Up), SR, SD, SL
 //Output:   0(fail), 1(success) 
-bool move(char* dir)
+void move(char* dir)
 {
     char succ = 0;
     int fir_x, fir_y, sec_x, sec_y, tmp, tmp_x, tmp_y;
@@ -201,6 +229,7 @@ bool move(char* dir)
                     else
                     {
                         printf("Can't push!!");
+                        printf("tmp_x = %d tmp_y = %d\n",tmp_x, tmp_y);
                     }    
                 }
                 break;
@@ -297,7 +326,7 @@ bool move(char* dir)
                 break;
         }
     }
-    return 0;
+    return;
 }
 
 //See map status, and print out
@@ -321,26 +350,35 @@ void print_name(int x, int y)
         case 0:
             printf("   ");
             break;
-        case 1:
+        case TT:
             printf("TT ");
             break;
-        case 2:
+        case GY:
             printf("GY ");
             break;
-        case 3:
+        case CF:
             printf("CF ");
             break;
-        case 4:
+        case MC:
             printf("MC ");
             break;
-        case 5:
+        case ZY:
             printf("ZY ");
             break;
-        case 6:
+        case HC:
             printf("HC ");
             break;
-        case 7:
+        case Z:
             printf("Z  ");
+            break;
+        case P:
+            printf("P  ");
+            break;
+        case S:
+            printf("S  ");
+            break;
+        case H:
+            printf("H  ");
             break;
     }
 }
@@ -443,7 +481,10 @@ bool can_move(char charac, char dir, int x, int y)
                         return 0;
                     break;
                 case 'L':
-                    if(!map[x-1])
+                    if(!map[x][y-1])
+                        return 1;
+                    else
+                        return 0;
                     break;
             }
             break;
@@ -467,7 +508,7 @@ bool can_move(char charac, char dir, int x, int y)
 
                     break;
                 case 'D': 
-                    if(!map[x+1][y])
+                    if(!map[x+2][y])
                         return 1;
                     else   
                         return 0;
@@ -481,6 +522,9 @@ bool can_move(char charac, char dir, int x, int y)
             }
             break;
         case Z:
+        case P:
+        case S:
+        case H:
             switch(dir)
             {
                 case 'U': 
