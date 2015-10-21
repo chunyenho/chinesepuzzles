@@ -122,6 +122,8 @@ void push(char charac, int x, int y)
 //Input:    UP, RIGHT, DOWN, LEFT
 //Output:   0(fail), 1(success) 
 bool move(char dir);
+{
+}
 //See map status, and print out
 void status()
 {
@@ -170,7 +172,24 @@ void print_name(int x, int y)
 //Output: two x-y coordinates
 //        (32bit int 
 //        0x X1X1 Y1Y1 X2X2 Y2Y2)
-int findfree();
+int findfree()
+{
+    int count = 0, result = 0;
+    for(i=0; i<5; i++)
+    {
+        for(j=0; j<4; j++)
+        {
+            if(map[i][j] == 0)
+            { 
+                count ++;
+                result <<= 8;
+                result += i;
+                result <<= 8;
+                result += j;
+            } 
+        }
+    }
+}
 //Check map whether it's completed
 bool checkcomplete()
 {
