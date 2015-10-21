@@ -21,8 +21,8 @@ bool move(char* dir);
 void status(void);
 void print_name(int x, int y);
 int find_free();
-int find_charac(char charac, int* x, int* y);
-bool can_move(char charac, char dir, int x, int y);
+void find_charac(char charac, int* x, int* y); // <-----
+bool can_move(char charac, char dir, int x, int y); // <-----
 bool check_complete(); 
 //Initialize map to specific mode
 //Set 0 to count
@@ -330,6 +330,23 @@ int find_free()
                 result <<= 8;
                 result += j;
             } 
+        }
+    }
+}
+//find the up-left corner of the character
+void find_charac(char charac, int* x, int* y)
+{
+    int i, j;
+    for(i=0;i<5;i++)
+    {
+        for(j=0;j<4;j++)
+        {
+            if(map[i][j] == charac)
+            {
+                *x= i;
+                *y= j;
+                return;
+            }
         }
     }
 }
