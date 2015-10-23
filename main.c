@@ -1,3 +1,7 @@
+/*
+main.c:
+    This is the main program for running chinese puzzle!
+*/
 #include <stdio.h>
 #include "map.h"
 int main()

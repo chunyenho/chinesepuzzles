@@ -1,6 +1,7 @@
-char map[5][4];
-typedef char bool;
-int steps = 0;
+/*
+map.h:
+    Define map, characters, operation functions in the game.
+*/
 /*
 人名    代碼	大小	個數
 -------------------------------
@@ -15,6 +16,9 @@ int steps = 0;
 象:     S       1x1     1
 士:     H       1x1     1
 */
+char map[5][4];
+typedef char bool;
+int steps = 0;
 enum {Free, TT, GY, CF, MC, ZY, HC, Z, P, S, H};
 enum {UP, RIGHT, DOWN, LEFT};
 void init(void);
