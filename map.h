@@ -194,7 +194,7 @@ void move(char* dir)
                     }
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                     }    
                 }
                 break;
@@ -211,7 +211,7 @@ void move(char* dir)
                     }
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                     }     
                 }
                 break;
@@ -228,7 +228,7 @@ void move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                         printf("tmp_x = %d tmp_y = %d\n",tmp_x, tmp_y);
                     }    
                 }
@@ -246,7 +246,7 @@ void move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                     }    
                 }
                 break;
@@ -269,7 +269,7 @@ void move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                     }    
                 }
                 break;
@@ -286,7 +286,7 @@ void move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                     }    
                 }
                 break;
@@ -303,7 +303,7 @@ void move(char* dir)
                     }  
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                     }   
                 }
                 break;
@@ -320,7 +320,7 @@ void move(char* dir)
                     }  
                     else
                     {
-                        printf("Can't push!!");
+                        printf("Can't push!!\n");
                     }  
                 }
                 break;
