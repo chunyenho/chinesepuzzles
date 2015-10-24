@@ -18,6 +18,8 @@ typedef struct node
     node* SD;
     node* SL;
 }node;
+/* function in map.h */
+bool check_complete();
 
 void search_childs (node* parent);
 bool create_node (node*  parent, char dir);
