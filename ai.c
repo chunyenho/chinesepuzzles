@@ -19,12 +19,21 @@ typedef struct node
     node* SD;
     node* SL;
 }node;
+
+typedef struct queue
+{
+    node* now;
+    queue* next;
+    queue* pre;
+}
 /* function in map.h */
 bool check_complete();
 
 void search_childs (node* parent);
 bool create_node (node*  parent, char* dir);
 void path_to_root (node);
+void enqueue_node(node* now);
+node* dequeue_parent();
 
 long long node_count = 0; /*  node_count: record the total number of nodes, and it will be added by create_node. */
 node* root = (node *)malloc(sizeof(node)); /* node* root:    root node(original map state). */
@@ -46,6 +55,8 @@ void search_childs (node* parent)
         parent->SL = create_node(parent, "SL");
         parent->visited = 1;
     }
+    else
+        printf("node visited error!!");
 }
 /*
 bool create_node():
@@ -71,9 +82,14 @@ node* create_node (node*  parent, char* dir)
           {   
               child->map[i][j] = map[i][j];
           }   
+      }
+      if(!search_database(child))
+      {
+          enqueue(child);
+          check_complete();
       }   
     }
-    check_complete();
+    free(child);
 }
 /*
 char path_to_root(node):
@@ -81,3 +97,7 @@ char path_to_root(node):
  */
 char* path_to_root (node);
 
+int main()
+{
+        
+}
