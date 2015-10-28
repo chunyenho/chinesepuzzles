@@ -24,7 +24,7 @@ enum {UP, RIGHT, DOWN, LEFT};
 void init(void);
 void pull(char charac);
 void push(char charac, int x, int y);
-void move(char* dir);
+bool move(char* dir);
 void status(void);
 void print_name(int x, int y);
 int find_free();
@@ -172,7 +172,7 @@ void push(char charac, int x, int y)
 //Move fuction
 //Input:    FU(First Up), FR, FD, FL, SU(Second Up), SR, SD, SL
 //Output:   0(fail), 1(success) 
-void move(char* dir)
+bool move(char* dir)
 {
     char succ = 0;
     int fir_x, fir_y, sec_x, sec_y, tmp, tmp_x, tmp_y;
@@ -195,10 +195,12 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x-1,tmp_y);
+                        return 1;
                     }
                     else
                     {
                         printf("Can't push!!\n");
+                        return 0;
                     }    
                 }
                 break;
@@ -212,10 +214,12 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x,tmp_y+1);
+                        return 1;
                     }
                     else
                     {
                         printf("Can't push!!\n");
+                        return 0;
                     }     
                 }
                 break;
@@ -229,11 +233,12 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x+1,tmp_y);
+                        return 1;
                     } 
                     else
                     {
                         printf("Can't push!!\n");
-                        printf("tmp_x = %d tmp_y = %d\n",tmp_x, tmp_y);
+                        return 0;
                     }    
                 }
                 break;
@@ -247,10 +252,12 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x,tmp_y-1);
+                        return 1;
                     } 
                     else
                     {
                         printf("Can't push!!\n");
+                        return 0;
                     }    
                 }
                 break;
@@ -270,10 +277,12 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x-1,tmp_y);
+                        return 1;
                     } 
                     else
                     {
                         printf("Can't push!!\n");
+                        return 0;
                     }    
                 }
                 break;
@@ -287,10 +296,12 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x,tmp_y+1);
+                        return 1;
                     } 
                     else
                     {
                         printf("Can't push!!\n");
+                        return 0;
                     }    
                 }
                 break;
@@ -304,10 +315,12 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x+1,tmp_y);
+                        return 1;
                     }  
                     else
                     {
                         printf("Can't push!!\n");
+                        return 0;
                     }   
                 }
                 break;
@@ -321,16 +334,17 @@ void move(char* dir)
                         steps++;
                         pull((char)tmp);
                         push((char)tmp,tmp_x,tmp_y-1);
+                        return 1;
                     }  
                     else
                     {
                         printf("Can't push!!\n");
+                        return 0;
                     }  
                 }
                 break;
         }
     }
-    return;
 }
 
 //See map status, and print out
