@@ -345,6 +345,7 @@ bool move(char* dir)
                 break;
         }
     }
+    return -1;
 }
 
 //See map status, and print out
