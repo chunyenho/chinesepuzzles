@@ -274,6 +274,7 @@ bool search_store_to_database(node* now)
         }
         if(!fail)
         {
+            printf("find!!\n");
             free(new_data);
             return 1;
         }

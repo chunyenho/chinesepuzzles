@@ -186,7 +186,7 @@ bool move(char* dir)
         switch(dir[1])
         {
             case 'U':
-                if(map[fir_x+1][fir_y])
+                if(fir_x+1<5 && map[fir_x+1][fir_y])
                 {
                     tmp = map[fir_x+1][fir_y]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -205,7 +205,7 @@ bool move(char* dir)
                 }
                 break;
             case 'R':
-                if(map[fir_x][fir_y-1])
+                if(fir_y-1>0 && map[fir_x][fir_y-1])
                 {
                     tmp = map[fir_x][fir_y-1]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -224,7 +224,7 @@ bool move(char* dir)
                 }
                 break;
             case 'D':
-                if(map[fir_x-1][fir_y])
+                if(fir_x>0 && map[fir_x-1][fir_y])
                 {
                     tmp = map[fir_x-1][fir_y]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -243,7 +243,7 @@ bool move(char* dir)
                 }
                 break;
             case 'L':
-                if(map[fir_x][fir_y+1])
+                if(fir_y<4  && map[fir_x][fir_y+1])
                 {
                     tmp = map[fir_x][fir_y+1]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -268,7 +268,7 @@ bool move(char* dir)
         switch(dir[1])
         {
             case 'U':
-                if(map[sec_x+1][sec_y])
+                if(sec_x+1<5 && map[sec_x+1][sec_y])
                 {
                     tmp = map[sec_x+1][sec_y]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -287,7 +287,7 @@ bool move(char* dir)
                 }
                 break;
             case 'R':
-                if(map[sec_x][sec_y-1])
+                if(sec_y-1>0 && map[sec_x][sec_y-1])
                 {
                     tmp = map[sec_x][sec_y-1]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -306,7 +306,7 @@ bool move(char* dir)
                 }
                 break;
             case 'D':
-                if(map[sec_x-1][sec_y])
+                if(sec_x-1>0 && map[sec_x-1][sec_y])
                 {
                     tmp = map[sec_x-1][sec_y]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -325,7 +325,7 @@ bool move(char* dir)
                 }
                 break;
             case 'L':
-                if(map[sec_x][sec_y+1])
+                if(sec_y+1<4 && map[sec_x][sec_y+1])
                 {
                     tmp = map[sec_x][sec_y+1]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
