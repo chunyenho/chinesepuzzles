@@ -199,7 +199,7 @@ bool move(char* dir)
                     }
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }    
                 }
@@ -218,7 +218,7 @@ bool move(char* dir)
                     }
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }     
                 }
@@ -237,7 +237,7 @@ bool move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }    
                 }
@@ -256,7 +256,7 @@ bool move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }    
                 }
@@ -281,7 +281,7 @@ bool move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }    
                 }
@@ -300,7 +300,7 @@ bool move(char* dir)
                     } 
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }    
                 }
@@ -319,7 +319,7 @@ bool move(char* dir)
                     }  
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }   
                 }
@@ -338,7 +338,7 @@ bool move(char* dir)
                     }  
                     else
                     {
-                        printf("Can't push!!\n");
+                        //printf("Can't push!!\n");
                         return 0;
                     }  
                 }

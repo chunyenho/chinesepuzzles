@@ -117,6 +117,8 @@ enqueue:
 void enqueue(node* now)
 {
     node_count++;
+    if(!(node_count%1000))
+        printf("node count: %d\n",node_count);
     queue* new = (queue *)malloc(sizeof(queue));
     new->now = now;
     if(!head && !tail) //first node
@@ -180,7 +182,8 @@ node* create_node (node*  parent, char* dir)
        if(!search_store_to_database(child))
         {
             enqueue(child);
-            check_complete();
+            if(check_complete())
+                printf("node count: %d",node_count);
             return child;
         }   
     }
@@ -305,7 +308,6 @@ int main()
     while(1)
     {
         dequeue();
-        //printf("node count: %d",node_count);
     }
     return 0;
 }
