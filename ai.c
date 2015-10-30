@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "map.h" 
+
 typedef struct node 
 {
     char map[5][4];
@@ -84,7 +85,11 @@ dequeue:
 void dequeue()
 {
     if(!tail)
+    {
+            
         printf("Dequeue error!!");
+        getchar();
+    }
     else
     {
         search_childs(tail->now);
@@ -274,7 +279,7 @@ bool search_store_to_database(node* now)
         }
         if(!fail)
         {
-            printf("find!!\n");
+            //printf("find!!\n");
             free(new_data);
             return 1;
         }
@@ -300,7 +305,7 @@ int main()
     while(1)
     {
         dequeue();
-        printf("node count: %d",node_count);
+        //printf("node count: %d",node_count);
     }
     return 0;
 }

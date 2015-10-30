@@ -205,7 +205,7 @@ bool move(char* dir)
                 }
                 break;
             case 'R':
-                if(fir_y-1>0 && map[fir_x][fir_y-1])
+                if(fir_y-1>-1 && map[fir_x][fir_y-1])
                 {
                     tmp = map[fir_x][fir_y-1]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -224,7 +224,7 @@ bool move(char* dir)
                 }
                 break;
             case 'D':
-                if(fir_x>0 && map[fir_x-1][fir_y])
+                if(fir_x>-1 && map[fir_x-1][fir_y])
                 {
                     tmp = map[fir_x-1][fir_y]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -287,7 +287,7 @@ bool move(char* dir)
                 }
                 break;
             case 'R':
-                if(sec_y-1>0 && map[sec_x][sec_y-1])
+                if(sec_y-1>-1 && map[sec_x][sec_y-1])
                 {
                     tmp = map[sec_x][sec_y-1]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -306,7 +306,7 @@ bool move(char* dir)
                 }
                 break;
             case 'D':
-                if(sec_x-1>0 && map[sec_x-1][sec_y])
+                if(sec_x-1>-1 && map[sec_x-1][sec_y])
                 {
                     tmp = map[sec_x-1][sec_y]; //tmp record the character
                     find_charac((char)tmp,&tmp_x,&tmp_y);
@@ -453,25 +453,25 @@ bool can_move(char charac, char dir, int x, int y)
             switch(dir)
             {
                 case 'U':
-                    if(!map[x-1][y] && !map[x-1][y+1])
+                    if(x-1>-1 && y+1<4 && !map[x-1][y] && !map[x-1][y+1])
                         return 1;
                     else
                         return 0;
                     break;
                 case 'R':
-                    if(!map[x][y+2] && !map[x+1][y+2])
+                    if(x+1<5 && y+2<4 && !map[x][y+2] && !map[x+1][y+2])
                         return 1;
                     else  
                         return 0;
                     break;
                 case 'D':
-                    if(!map[x+2][y] && !map[x+2][y+1])
+                    if(x+2<5 && y+1<4 && !map[x+2][y] && !map[x+2][y+1])
                         return 1;
                     else  
                         return 0;
                     break;
                 case 'L':
-                    if(!map[x][y-1] && !map[x+1][y-1])
+                    if(x+1<5 && y-1>-1 && !map[x][y-1] && !map[x+1][y-1])
                         return 1;
                     else  
                         return 0;
@@ -482,25 +482,25 @@ bool can_move(char charac, char dir, int x, int y)
             switch(dir)
             {
                 case 'U':
-                    if(!map[x-1][y] && !map[x-1][y+1])
+                    if(x-1>-1 && y+1<4 && !map[x-1][y] && !map[x-1][y+1])
                         return 1;
                     else
                         return 0;
                     break;
                 case 'R':
-                    if(!map[x][y+2])
+                    if(y+2<4 && !map[x][y+2])
                         return 1;
                     else
                         return 0;
                     break;
                 case 'D':
-                    if(!map[x+1][y] && !map[x+1][y+1])
+                    if(x+1<5 && y+1<4 && !map[x+1][y] && !map[x+1][y+1])
                         return 1;
                     else 
                         return 0;
                     break;
                 case 'L':
-                    if(!map[x][y-1])
+                    if(y-1>-1 && !map[x][y-1])
                         return 1;
                     else
                         return 0;
@@ -514,26 +514,26 @@ bool can_move(char charac, char dir, int x, int y)
             switch(dir)
             {
                 case 'U': 
-                    if(!map[x-1][y])
+                    if(x-1>-1 && !map[x-1][y])
                         return 1;
                     else   
                         return 0;
                     break;
                 case 'R': 
-                    if(!map[x][y+1] && !map[x+1][y+1])
+                    if(x+1<5 && y+1<4 && !map[x][y+1] && !map[x+1][y+1])
                         return 1;
                     else   
                         return 0;
 
                     break;
                 case 'D': 
-                    if(!map[x+2][y])
+                    if(x+2<5 && !map[x+2][y])
                         return 1;
                     else   
                         return 0;
                     break;
                 case 'L': 
-                    if(!map[x][y-1] && !map[x+1][y-1])
+                    if(x+1<5 && y-1>-1 && !map[x][y-1] && !map[x+1][y-1])
                         return 1;
                     else   
                         return 0;
@@ -547,25 +547,25 @@ bool can_move(char charac, char dir, int x, int y)
             switch(dir)
             {
                 case 'U': 
-                    if(!map[x-1][y])
+                    if(x-1>-1 && !map[x-1][y])
                         return 1;
                     else   
                         return 0;
                     break;
                 case 'R': 
-                    if(!map[x][y+1])
+                    if(y+1<4 && !map[x][y+1])
                         return 1;
                     else   
                         return 0;
                     break;
                 case 'D': 
-                    if(!map[x+1][y])
+                    if(x+1<5 && !map[x+1][y])
                         return 1;
                     else   
                         return 0;
                     break;
                 case 'L': 
-                    if(!map[x][y-1])
+                    if(y-1>-1 && !map[x][y-1])
                         return 1;
                     else   
                         return 0;
@@ -580,7 +580,9 @@ bool check_complete()
 {
     if(map[3][1]==TT && map[3][2]==TT && map[4][1]==TT && map[4][2]==TT)
     {
-        printf("Success!!!!!!!!!");
+        printf("Success!!!!!!!!!\n");
+        status();
+        getchar();
         return 1;
     }
     return 0;
