@@ -582,7 +582,6 @@ bool check_complete()
     {
         printf("Success!!!!!!!!!\n");
         status();
-        getchar();
         return 1;
     }
     return 0;

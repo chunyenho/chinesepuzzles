@@ -183,7 +183,10 @@ node* create_node (node*  parent, char* dir)
         {
             enqueue(child);
             if(check_complete())
+            {
                 printf("node count: %d",node_count);
+                getchar(); 
+            }
             return child;
         }   
     }
